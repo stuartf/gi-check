@@ -1,18 +1,26 @@
-p0 = [0,0];
-p1 = [0,2.5];
-p2 = [9.9,2.5];
-p3 = [10,2.4];
-p4 = [10.1,2.5];
-p5 = [15,2.5];
-p6 = [15,1.9];
-p7 = [8,1.9];
-p8 = [8,.6];
-p9 = [15,.6];
-p10 = [15, 0];
-p11 = [10.1,0];
-p12 = [10,.1];
-p13 = [9.9,0];
-points = [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13];
-scale([10,10,10])
-    linear_extrude(height=3.5)
-        polygon(points);
+use <MCAD/boxes.scad>
+
+difference(){
+    translate([75, 12.5, 17.5]){
+        roundedBox([150, 25, 35], .5);
+    }
+    translate([-.001, 6, -.5]){
+        cube([70.001, 13, 36]);
+    }
+    translate([50, 0, 0]){
+        cylinder(r=.5, h=35);
+    }
+
+    translate([50, 25, 0]){
+        cylinder(r=.5, h=35);
+    }
+
+    rotate([90, 0, 0]){
+        translate([50, 0, -25]){
+            cylinder(r=.5, h=25);
+        }
+        translate([50, 35, -25]){
+            cylinder(r=.5, h=25);
+        }
+    }
+}
